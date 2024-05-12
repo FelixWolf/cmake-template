@@ -53,6 +53,7 @@ if (NOT DEFINED CMAKE_TOOLCHAIN_FILE)
         # search headers and libraries in the target environment
         set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
         set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+    
     endif ()
 endif ()
 
@@ -62,8 +63,10 @@ project(${PROJECT_NAME} CXX)
 # Set architecture based on the target operating system
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(BITINESS 64)
+
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
     set(BITINESS 32)
+
 endif()
 
 if (WIN32)
@@ -82,10 +85,11 @@ elseif (VITA)
     set(ARCH "vita")
 
 elseif (N3DS)
-    set(ARCH "3dsc")
+    set(ARCH "3ds")
 
 else ()
     message(FATAL_ERROR "Unsupported operating system")
+
 endif()
 
 # Set output directory for build artifacts
